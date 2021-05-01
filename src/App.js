@@ -1,25 +1,56 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-export default App;
+// pages
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Factor from "./pages/Factor";
+import Ranking from "./pages/Ranking";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Charts from "./pages/Charts";
+
+// routes
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+
+export default function App(){
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/ranking">
+            <Ranking />
+          </Route>
+          <Route path="/search">
+            <Search />
+          </Route>
+          <Route path="/factor">
+            <Factor />
+          </Route>
+          <Route path="/charts">
+              <Charts />
+            </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Switch>
+
+        <Footer />
+      </div>
+    </Router>
+
+    
+  )
+}
