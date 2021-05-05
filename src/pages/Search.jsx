@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {AgGridReact} from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
@@ -12,16 +12,9 @@ import SearchBar from "../components/SearchBar";
 export default function Search(){ 
   const [search, setSearch] = useState("Finland");
   const {loading, rowData, error} = useAllData(search);
-  const [chartData, setChartData] = useState([])
 
-  useEffect(() => {
-   setChartData(parseFloat(rowData.map((e) => e.score)))
-    
-  }, [rowData])
-  console.log(rowData)
-
-  //let chartData = rowData.map((e) => parseFloat(e.score) );
-  //console.log(chartData);
+  let chartData = rowData.map((e) => parseFloat(e.score) );
+  console.log(chartData);
 
   const columns = [
     {headerName: "Year", field: "year", filter: true},
@@ -41,8 +34,7 @@ export default function Search(){
         fill: false,
         backgroundColor: 'rgba(75,192,192,0.4)',
         borderColor: 'rgba(75,192,192,1)',
-        data:{chartData}
-        //data: ["7.2", "6.3", "7.8", "6.4", "7,3", "7.6"]
+        data:chartData
       }
     ]
   };
@@ -74,7 +66,7 @@ export default function Search(){
         /> 
       </div>
       <br />
-      {JSON.stringify(chartData)}
+
       <div className="lineChart">
         <Line data={data} />
       </div>
