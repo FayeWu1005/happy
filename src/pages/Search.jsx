@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {AgGridReact} from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+
 import {Line} from 'react-chartjs-2';
-
-
 
 import {useAllData} from "../components/api";
 import SearchBar from "../components/SearchBar";
@@ -13,15 +12,24 @@ import SearchBar from "../components/SearchBar";
 export default function Search(){ 
   const [search, setSearch] = useState("Finland");
   const {loading, rowData, error} = useAllData(search);
+  const [chartData, setChartData] = useState([])
 
-  let chartData = rowData.map((e) => e.score);
-  console.log(chartData);
-  
+  useEffect(() => {
+   setChartData(parseFloat(rowData.map((e) => e.score)))
+    
+  }, [rowData])
+  console.log(rowData)
+
+  //let chartData = rowData.map((e) => parseFloat(e.score) );
+  //console.log(chartData);
+
   const columns = [
-    {headerName: "Year", field: "year"},
+    {headerName: "Year", field: "year", filter: true},
     {headerName: "Rank", field: "rank"},
     {headerName: "Score", field: "score"}
   ];
+
+
 
   //============= line chart ===============================
 
@@ -33,8 +41,8 @@ export default function Search(){
         fill: false,
         backgroundColor: 'rgba(75,192,192,0.4)',
         borderColor: 'rgba(75,192,192,1)',
-        //data:{chartData}
-        data: ["7.2", "6.3", "7.8", "6.4", "7,3", "7.6"]
+        data:{chartData}
+        //data: ["7.2", "6.3", "7.8", "6.4", "7,3", "7.6"]
       }
     ]
   };
@@ -66,6 +74,7 @@ export default function Search(){
         /> 
       </div>
       <br />
+      {JSON.stringify(chartData)}
       <div className="lineChart">
         <Line data={data} />
       </div>
@@ -73,6 +82,3 @@ export default function Search(){
     
   )
 }
-
-
-

@@ -2,11 +2,13 @@
 import React from "react";
 //import {Link} from "react-router-dom";
 import {
-  Navbar, Nav, NavItem, NavLink, NavbarBrand, Button
+  Navbar, Nav, NavItem, NavLink, NavbarBrand
 } from "reactstrap";
 
 // navigation links
 export default function NavBar(){
+  //const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="navContainer">
       <Navbar color="dark" dark expand="lg">
@@ -22,12 +24,13 @@ export default function NavBar(){
             <NavItem>
               <NavLink href="/factor">Factors</NavLink>
             </NavItem>
-            
           </Nav>
-          <Nav className="ml-auto" navbar>
+
+          {/* For user accounts */}
+          <Nav className="ml-auto" navbar> 
             <NavItem>
               <NavLink href="/register">Register</NavLink>
-            </NavItem>
+            </NavItem>  
             <NavItem>
               <NavLink href="/login">Login</NavLink>
             </NavItem>

@@ -13,8 +13,8 @@ export default function Ranking(){
   const {loading, rowData, error} = useData(innerChoose);
   
   const columns = [
-    {headerName: "Rank", field: "rank"},
-    {headerName: "Country", field: "country"},
+    {headerName: "Rank", field: "rank", sortable: true},
+    {headerName: "Country", field: "country", filter: true},
     {headerName: "Score", field: "score"},
   ];
 
@@ -41,7 +41,7 @@ export default function Ranking(){
         columnDefs={columns}
         rowData={rowData}
         pagination={true}
-        paginationPageSize={10}
+        paginationPageSize={15}
         /> 
       </div>
       
