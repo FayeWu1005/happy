@@ -3,17 +3,25 @@ import {useLocation, useHistory} from "react-router-dom";
 import {Button} from "reactstrap";
 import {Bar} from "react-chartjs-2";
 
-import {useAllData} from "../components/api";
+import {useFactorByCountry} from "../components/api";
 
 export default function Charts(){
   const history = useHistory();
   const params = new URLSearchParams(useLocation().search);
   const country = params.get("country");
+  const year = params.get("year");
 
-  const {loading, rowData, error} = useAllData(country);
+  const {loading, rowData, error} = useFactorByCountry(year, country);
 
   // // ============== bar chart =============================
-  let barData = rowData.map((e) => parseFloat(e.economy));
+  let economyData = rowData.map((e) => e.economy);
+  let familyData = rowData.map((e) => e.family);
+  let healthData = rowData.map((e) => e.health);
+  let freedomData = rowData.map((e) => e.freedom);
+  let generosityData = rowData.map((e) => e.generosity);
+  let trustData = rowData.map((e) => e.trust);
+
+  let barData = [...economyData, ...familyData, ...healthData, ...freedomData, ...generosityData, ...trustData]
   
   console.log(barData)
 
@@ -57,21 +65,7 @@ export default function Charts(){
       }
     }
   }
-  // const options = {
-  //   scales: {
-      
-  //     // yAxes: [
-  //     //   { 
-  //     //     ticks: {
-  //     //       beginAtZero: false,
-  //     //       min: 6,
-  //     //       max: 9
-  //     //     },
-  //     //   },
-  //     // ],
-  //   },
-  // };
-  //-------------------------------------------------------------
+//-------------------------------------------------------------
 
   if(loading){
     return <p>Loading</p>
@@ -82,7 +76,7 @@ export default function Charts(){
 
   return (
     <div className="container">
-      <h3>The country that you seleced was : {country}</h3>
+      <h3>Factors display for {country}</h3>
 
       <Bar data={data} />
 

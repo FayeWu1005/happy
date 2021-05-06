@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-//import jwt from "jsonwebtoken";
 
 //=============================================
 
@@ -43,6 +42,33 @@ function getFactors(f){
       country: data.country,
       score: data.score,
       year: data.year,
+      economy: data.economy,
+      family: data.family,
+      health: data.health,
+      freedom: data.freedom,
+      generosity: data.generosity,
+      trust: data.trust
+    };
+    
+  }))
+}
+
+function getFactorsByCountry(y, c){
+  console.log(y, c);
+  const URL =  `http://131.181.190.87:3000/factors/${y}?country=${c}`;
+  let token = localStorage.getItem("token");
+  const headers = {
+    accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`
+  }
+  return fetch(URL, {
+    headers: headers
+  })
+  .then((res) => res.json())
+  .then((res) => 
+  res.map((data) => {
+    return {
       economy: data.economy,
       family: data.family,
       health: data.health,
@@ -104,7 +130,7 @@ export function useData(search){
 
 export function useFactor(search){
   const [rowData, setRowData] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -123,9 +149,35 @@ export function useFactor(search){
   return {
     loading,
     rowData,
+    error
+  }
+}
+
+export function useFactorByCountry(year, country){
+  const [rowData, setRowData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    getFactorsByCountry(year, country)
+    .then((rowData) => {
+      setRowData(rowData)})
+    .catch(() => {
+      setError(error);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+
+  }, [])
+
+  return {
+    loading,
+    rowData,
     error: null
   }
 }
+
 export function useAllData(search){
   const [rowData, setRowData] = useState([]);
   const [error, setError] = useState(null);

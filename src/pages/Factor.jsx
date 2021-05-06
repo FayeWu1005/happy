@@ -9,7 +9,7 @@ import {useFactor} from "../components/api";
 
 //===========================================
 export default function Ranking(){ 
-  const [innerChoose, setInnerChoose] = useState("2020");
+  const [innerChoose, setInnerChoose] = useState("2015");
   const {loading, rowData, error} = useFactor(innerChoose);
   const history = useHistory();
 
@@ -28,32 +28,35 @@ export default function Ranking(){
   if(loading){
     return <p>Loading</p>
   }
-  if(error){
+  else if(error){
     return <p>Something went wrong: {error.message}</p>
   }
-
-  return(
-    <div className="container">
-      <Droplist onChange={setInnerChoose}/>
-      <div
-      className="ag-theme-balham"
-      style={{
-        height: "500px",
-        width: "800",
-        margin: "auto"
-      }}>
-        <AgGridReact
-        columnDefs={columns}
-        rowData={rowData}
-        pagination={true}
-        paginationPageSize={15}
-        onRowClicked={(row) => history.push(`/charts?country=${row.data.country}`)}
-        /> 
+  else{
+    return(
+      <div className="container">
+        <Droplist onChange={setInnerChoose}/>
+        <div
+        className="ag-theme-balham"
+        style={{
+          height: "500px",
+          width: "800",
+          margin: "auto"
+        }}>
+          <AgGridReact
+          columnDefs={columns}
+          rowData={rowData}
+          pagination={true}
+          paginationPageSize={15}
+          onRowClicked={(row) => history.push(`/charts?country=${row.data.country}&year=${innerChoose}`)}
+          /> 
+        </div>
+        
       </div>
       
-    </div>
-    
-  )
+    )
+  }
+
+  
 }
 
 
