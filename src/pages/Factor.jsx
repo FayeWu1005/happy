@@ -8,7 +8,7 @@ import Droplist from "../components/Droplist";
 import {useFactor} from "../components/api";
 
 //===========================================
-export default function Ranking(){ 
+export default function Ranking(props){ 
   const [innerChoose, setInnerChoose] = useState("2015");
   const {loading, rowData, error} = useFactor(innerChoose);
   const history = useHistory();
@@ -33,8 +33,9 @@ export default function Ranking(){
   }
   else{
     return(
+
       <div className="container">
-        <Droplist onChange={setInnerChoose}/>
+        {props.isLoggedIn? <><Droplist onChange={setInnerChoose}/>
         <div
         className="ag-theme-balham"
         style={{
@@ -49,10 +50,8 @@ export default function Ranking(){
           paginationPageSize={15}
           onRowClicked={(row) => history.push(`/charts?country=${row.data.country}&year=${innerChoose}`)}
           /> 
-        </div>
-        
-      </div>
-      
+        </div></> : <><h2 className="errorPage">Oops!! Please login.</h2></>}    
+      </div>  
     )
   }
 

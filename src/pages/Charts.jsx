@@ -51,21 +51,6 @@ export default function Charts(){
       },
     ],
   };
-  
-  // const config = {
-  //   type: 'bar',
-  //   data: data,
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: false,
-  //         min: 5,
-  //         max: 9
-  //       }
-  //     }
-  //   }
-  // }
-//-------------------------------------------------------------
 
   if(loading){
     return <p>Loading</p>
@@ -77,9 +62,7 @@ export default function Charts(){
   return (
     <div className="container">
       <h3>Factors display for {country}</h3>
-
       <Bar data={data} />
-
       <Button
       color="info"
       size="sm"

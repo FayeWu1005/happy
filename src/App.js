@@ -37,7 +37,7 @@ export default function App(){
             <Search />
           </Route>
           <Route path="/factor">
-            <Factor />
+            <Factor isLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           </Route>
           <Route path="/charts">
               <Charts />

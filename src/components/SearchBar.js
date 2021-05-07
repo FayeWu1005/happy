@@ -26,10 +26,7 @@ export default function SearchBar(props){
           type="button"
           onClick={() => props.onSubmit(innerSearch)}
         >Search</Button>
-      </InputGroup>
-      
-
-        
+      </InputGroup>        
     </div>
   )
 }

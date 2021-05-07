@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -84,7 +84,6 @@ nav ul li a{
   
 }
 
-
 /* methods */
 .methods{
   height: 300px;
@@ -95,7 +94,7 @@ nav ul li a{
   color:#d8d8d8;
 }
 
-/* Ranking */
+/* RANKING PAGE */
 .container{
   margin: 50px;
 }
@@ -107,6 +106,15 @@ nav ul li a{
   width: 100px;
 }
 
+/* FACTOR PAGE */
+.errorPage{
+  margin: 260px auto;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: crimson;
+}
+
+/* REGISTER AND LOGIN PAGE */
 /* Form */
 .form{
   margin: 130px auto;

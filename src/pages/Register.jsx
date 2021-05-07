@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-//import jwt from "jsonwebtoken";
 import {useHistory} from "react-router-dom";
 import { Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
@@ -12,12 +11,6 @@ export default function RegisterForm(){
 
   function register(username, password) {
     const url = `${API_URL}/user/register`;
-    //let token = localStorage.getItem("token");
-    // const headers = {
-    //   accept: "application/json",
-    //   "Content-Type": "application/json",
-    //   Authoriazation: `Bearer ${token}`
-    // }
 
     return fetch(url, {
       method: "POST",
