@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useLocation, useHistory} from "react-router-dom";
 import {Button} from "reactstrap";
 import {Bar} from "react-chartjs-2";
@@ -52,19 +52,19 @@ export default function Charts(){
     ],
   };
   
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: false,
-          min: 5,
-          max: 9
-        }
-      }
-    }
-  }
+  // const config = {
+  //   type: 'bar',
+  //   data: data,
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: false,
+  //         min: 5,
+  //         max: 9
+  //       }
+  //     }
+  //   }
+  // }
 //-------------------------------------------------------------
 
   if(loading){

@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import { Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
-const token = localStorage.getItem("token");
 const API_URL = "http://131.181.190.87:3000";
 
 export default function RegisterForm(){
@@ -13,7 +12,7 @@ export default function RegisterForm(){
 
   function register(username, password) {
     const url = `${API_URL}/user/register`;
-    let token = localStorage.getItem("token");
+    //let token = localStorage.getItem("token");
     // const headers = {
     //   accept: "application/json",
     //   "Content-Type": "application/json",
@@ -39,31 +38,34 @@ export default function RegisterForm(){
 
   return(
     
-    <div className="loginForm">
-      <h1>This is the Register page.</h1>
+    <div className="form">
+      <h2 className="loginTitle">Create your account</h2><br />
       <Form > 
         <FormGroup row>
-          <Label for="email" sm={1}>Username</Label>
-          <Col sm={10}>
+          <Label for="email" >Username</Label>
+          <Col >
             <Input type="email" name="email" id="email" placeholder="Email address" 
             onChange={(e) => {setUsername(e.target.value)}} />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="password" sm={1}>Password</Label>
-          <Col sm={10}>
+          <Label for="password" >Password</Label>
+          <Col >
             <Input type="password" name="password" id="password" placeholder="password"
             onChange={(e) => {setPassword(e.target.value)}} />
           </Col>
         </FormGroup>
-        <FormGroup check row>
-          <Col sm={{size: 10, offset: 1}}>
+        <br />
+        <FormGroup >
+          <Col >
             <Button 
-            color="primary"
+            color="danger"
             type="submit"
+            block
             onClick={(e) => {e.preventDefault();
             register(username, password);
-            history.push("/login")}}>Register</Button>
+            history.push("/login")}}
+            >Register</Button>
           </Col>
         </FormGroup>
       </Form>

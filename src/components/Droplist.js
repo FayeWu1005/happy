@@ -33,7 +33,8 @@ export default function Droplist(props){
   return(
     <div>
     <label htmlFor="year" className="year_choose">Choose a year: </label>
-      <select 
+      <select
+      className="droplist" 
       id="year"
       value={choose}
       onChange={e => {

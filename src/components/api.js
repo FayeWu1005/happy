@@ -33,6 +33,8 @@ function getFactors(f){
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`
   }
+  console.log(headers)
+
   return fetch(URL, {headers})
   .then((res) => res.json())
   .then((res) => 

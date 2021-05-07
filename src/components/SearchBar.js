@@ -8,7 +8,7 @@ export default function SearchBar(props){
     <div>
       <InputGroup>
         <InputGroupAddon addonType="prepend">
-          <Input
+          <Input 
           aria-labelledby="search-button"
           name="search"
           id="search"
@@ -20,7 +20,7 @@ export default function SearchBar(props){
           }} />
         </InputGroupAddon>
         
-        <Button
+        <Button 
           color="secondary"
           id="search-bt"
           type="button"

@@ -18,11 +18,14 @@ import Charts from "./pages/Charts";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
+import  {useState} from "react";
+
 export default function App(){
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header isLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -40,7 +43,7 @@ export default function App(){
               <Charts />
             </Route>
           <Route path="/login">
-            <Login />
+            <Login  setLoggedIn={setLoggedIn}/>
           </Route>
           <Route path="/register">
             <Register />

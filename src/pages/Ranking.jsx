@@ -13,9 +13,9 @@ export default function Ranking(){
   const {loading, rowData, error} = useData(innerChoose);
   
   const columns = [
-    {headerName: "Rank", field: "rank", sortable: true},
-    {headerName: "Country", field: "country", filter: true},
-    {headerName: "Score", field: "score"},
+    {headerName: "Rank", field: "rank", width: 300, sortable: true},
+    {headerName: "Country", field: "country", width: 400, filter: true},
+    {headerName: "Score", field: "score", width: 400},
   ];
 
   if(loading){

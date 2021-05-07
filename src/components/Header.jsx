@@ -2,16 +2,10 @@ import React from "react";
 import Nav from "./Nav";
 
 // the header
-export default function Header(){
+export default function Header(props){
   return(
     <header>
-      <div>
-        {/* <h1>
-          This is the Header.
-        </h1> */}
-      </div>
-
-      <Nav />
+      <Nav isLoggedIn={props.isLoggedIn} setLoggedIn={props.setLoggedIn}/>
     </header>
   )
 }

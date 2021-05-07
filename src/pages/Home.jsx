@@ -13,7 +13,7 @@ export default function Home(){
    <section className="hero">
      <div className="hero_content">
        <h1 className="hero_title">World Happiness Report</h1>
-       <p className="hero_subtitle">Data is collected from people in over 150 countries.</p>
+       <p className="hero_subtitle"><i>Data is collected from people in over 150 countries.</i></p>
      </div>
    </section>
  )
@@ -23,27 +23,27 @@ export default function Home(){
    const methodsData=[
      {
       text: "GDP per capita",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/1.svg", alt: ""}
      },
      {
       text: "Social support",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/2.svg", alt: ""}
      },
      {
       text: "Healthy life expectancy",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/3.svg", alt: ""}
      },
      {
       text: "Freedom to make life choices",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/4.svg", alt: ""}
      },
      {
       text: "Generosity",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/5.svg", alt: ""}
      },
      {
       text: "Perception of corruption",
-      img: {src: "", alt: ""}
+      img: {src: "img/icons/6.svg", alt: ""}
      }
    ]
 
@@ -68,7 +68,7 @@ export default function Home(){
  // display a method box when passed in the information for the methods
  const MethodsBox = ({method})=>(
    <div className="method_container">
-     
+      <img scr={method.img.src} />
        <div className="col">
          {method.text}
        </div>

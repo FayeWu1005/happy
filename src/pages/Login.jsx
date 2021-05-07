@@ -5,9 +5,7 @@ import { Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const API_URL = "http://131.181.190.87:3000";
 
-// login
-
-export default function LoginForm(){
+export default function LoginForm(props){
     const URL = `${API_URL}/user/login`;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -28,33 +26,36 @@ export default function LoginForm(){
           alert(res.message);
         } else {
           localStorage.setItem("token", res.token);
+          props.setLoggedIn(true)
         }
       });
   }
 
   return(
-    <div className="loginForm">
-      
+    <div className="form">
+      <h2 className="loginTitle">Login</h2><br />
       <Form > 
         <FormGroup row>
-          <Label for="email" sm={1}>Username</Label>
-          <Col sm={10}>
+          <Label for="email" >Username</Label>
+          <Col >
             <Input type="email" name="email" id="email" placeholder="Email address" 
             onChange={(e) => {setUsername(e.target.value)}} />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="password" sm={1}>Password</Label>
-          <Col sm={10}>
+          <Label for="password">Password</Label>
+          <Col >
             <Input type="password" name="password" id="password" placeholder="password"
             onChange={(e) => {setPassword(e.target.value  )}} />
           </Col>
         </FormGroup>
-        <FormGroup check row>
-          <Col sm={{size: 10, offset: 1}}>
+        <br />
+        <FormGroup>
+          <Col >
             <Button 
-            color="primary"
+            color="info"
             type="submit"
+            block
             onClick={(e) => {e.preventDefault();
             Login(username, password);
             history.push("/")}}>Login</Button>
