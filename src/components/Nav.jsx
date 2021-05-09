@@ -10,7 +10,6 @@ export default function NavBar(){
         <Navbar color="dark" dark expand="lg">
             <NavbarBrand href="/">Happiness</NavbarBrand>
             <Nav className="mr-auto" navbar>
-              
               <NavItem>
                 <NavLink href="/ranking">Rankings</NavLink>
               </NavItem>
@@ -24,7 +23,6 @@ export default function NavBar(){
 
             {/* For user accounts */}
            <Nav className="ml-auto" navbar> 
-            
             <NavItem>
               <NavLink href="/register" style={{backgroundColor: '#cf1322', color:'#ffffff'}}>Register</NavLink>
              </NavItem>           
@@ -41,6 +39,5 @@ export default function NavBar(){
 
   function logoutBt() {
     localStorage.clear();
-    //props.setLoggedIn(false);
   }
 }

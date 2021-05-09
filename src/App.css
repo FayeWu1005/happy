@@ -25,10 +25,10 @@ header{
 }
 footer{
   background: #212529;
-  padding: 20px;
   text-align: center;
   color: rgba(255,255,255,.5);
   height: 80px;
+  padding: 20px;
   
 }
 
@@ -59,7 +59,7 @@ nav ul li a{
 /* HOME */
 /* title and subtitle */
 .hero{
-  min-height: 650px;
+  min-height: 720px;
   text-align: center;
   background-image: url("/src/img/happy.jpg");
   background-size: cover;
@@ -87,11 +87,24 @@ nav ul li a{
 /* methods */
 .methods{
   height: 300px;
-  padding: 50px;
-  display: inline-block;
   text-align: center;
   width: 100%;
-  color:#d8d8d8;
+  color:#023;
+  padding: 50px;
+}
+
+.methodDisplay{
+  margin: 30px auto;
+}
+.imgWrapper{
+  display: inline-table;
+  margin: 20px 20px;
+}
+.methodImage{
+  border-radius: 50px;
+  width: 100px;
+  height: 80px;
+  
 }
 
 /* RANKING PAGE */

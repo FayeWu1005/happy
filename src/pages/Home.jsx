@@ -1,4 +1,62 @@
 import React from "react";
+import economy from "../img/economy.jpg";
+import family from "../img/family.jpg";
+import freedom from "../img/freedom.jpg";
+import generosity from "../img/generosity.jpg";
+import girl from "../img/girl.jpg";
+import handshake from "../img/handshake.jpg";
+
+const imgPath = [
+  {
+  text: "GDP per capita",
+  img: {
+    src: economy,
+    alt: "economy"
+    }
+  },
+  {
+    text: "Social support",
+    img: {
+    src: family,
+    alt: "family"
+    }
+  },
+  {
+    text: "Healthy life expectancy",
+    img: {
+    src: girl,
+    alt: "family"
+    }
+  },
+  {
+    text: "Free life choices",
+    img: {
+    src: freedom,
+    alt: "family"
+    }
+  },
+  {
+    text: "Generosity",
+    img: {
+    src: generosity,
+    alt: "family"
+    }
+  },
+  {
+    text: "Perception of corruption",
+    img: {
+    src: handshake,
+    alt: "handshake"
+    }
+  },
+
+]
+const ImgDisplay = ({item}) => (
+  <div className="imgWrapper">
+    <p>{item.text}</p>
+    <img className="methodImage" src={item.img.src} alt={item.img.alt} key={item} />
+  </div>
+)
 
 export default function Home(){
   return(
@@ -20,58 +78,17 @@ export default function Home(){
 
  // methods content
  function Methods(){
-   const methodsData=[
-     {
-      text: "GDP per capita",
-      img: {src: "img/icons/1.svg", alt: ""}
-     },
-     {
-      text: "Social support",
-      img: {src: "img/icons/2.svg", alt: ""}
-     },
-     {
-      text: "Healthy life expectancy",
-      img: {src: "img/icons/3.svg", alt: ""}
-     },
-     {
-      text: "Freedom to make life choices",
-      img: {src: "img/icons/4.svg", alt: ""}
-     },
-     {
-      text: "Generosity",
-      img: {src: "img/icons/5.svg", alt: ""}
-     },
-     {
-      text: "Perception of corruption",
-      img: {src: "img/icons/6.svg", alt: ""}
-     }
-   ]
-
   return (
     <article className="methods">
       <div className="methods_header">
         <h2>Methods and Philosophy</h2>
       </div>
 
-      <div className="methods_box-wreapper">
-        {
-          // display infomation 
-          methodsData.map((method) => (
-            <MethodsBox method={method}/>
-          ))
-        }
+      <div className="methodDisplay">
+        {imgPath.map((item) => (
+          <ImgDisplay item={item} />
+        ))}
       </div>
     </article>
   )
  }
-
- // display a method box when passed in the information for the methods
- const MethodsBox = ({method})=>(
-   <div className="method_container">
-      <img scr={method.img.src} />
-       <div className="col">
-         {method.text}
-       </div>
-     
-   </div>
- )

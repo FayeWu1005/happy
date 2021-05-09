@@ -17,11 +17,7 @@ import Charts from "./pages/Charts";
 // routes
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-
-import  {useState} from "react";
-
 export default function App(){
-  //const [loggedIn, setLoggedIn] = useState(false);
   return (
     <Router>
       <div className="App">
