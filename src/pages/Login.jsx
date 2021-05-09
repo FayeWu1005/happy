@@ -5,7 +5,7 @@ import { Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const API_URL = "http://131.181.190.87:3000";
 
-export default function LoginForm(props){
+export default function LoginForm(){
     const URL = `${API_URL}/user/login`;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ export default function LoginForm(props){
           alert(res.message);
         } else {
           localStorage.setItem("token", res.token);
-          props.setLoggedIn(true)
+          //props.setLoggedIn(true)
         }
       });
   }

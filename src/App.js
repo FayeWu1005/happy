@@ -21,11 +21,11 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import  {useState} from "react";
 
 export default function App(){
-  const [loggedIn, setLoggedIn] = useState(false);
+  //const [loggedIn, setLoggedIn] = useState(false);
   return (
     <Router>
       <div className="App">
-        <Header isLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <Header />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -37,16 +37,16 @@ export default function App(){
             <Search />
           </Route>
           <Route path="/factor">
-            <Factor isLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+            <Factor />
           </Route>
           <Route path="/charts">
               <Charts />
             </Route>
           <Route path="/login">
-            <Login  setLoggedIn={setLoggedIn}/>
+            <Login />
           </Route>
           <Route path="/register">
-            <Register />
+            <Register/>
           </Route>
         </Switch>
 

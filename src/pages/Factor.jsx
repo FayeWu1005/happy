@@ -8,21 +8,21 @@ import Droplist from "../components/Droplist";
 import {useFactor} from "../components/api";
 
 //===========================================
-export default function Ranking(props){ 
+export default function Ranking(){ 
   const [innerChoose, setInnerChoose] = useState("2015");
   const {loading, rowData, error} = useFactor(innerChoose);
   const history = useHistory();
 
   const columns = [
-    {headerName: "Rank", field: "rank"},
+    {headerName: "Rank", field: "rank", width: 80},
     {headerName: "Country", field: "country"},
-    {headerName: "Score", field: "score"},
-    {headerName: "Economy", field: "economy"},
-    {headerName: "Family", field: "family"},
-    {headerName: "Health", field: "health"},
-    {headerName: "Freedom", field: "freedom"},
-    {headerName: "Generosity", field: "generosity"},
-    {headerName: "Trust", field: "trust"}
+    {headerName: "Score", field: "score",width: 120},
+    {headerName: "Economy", field: "economy",width: 120},
+    {headerName: "Family", field: "family",width: 120},
+    {headerName: "Health", field: "health",width: 120},
+    {headerName: "Freedom", field: "freedom",width: 120},
+    {headerName: "Generosity", field: "generosity",width: 120},
+    {headerName: "Trust", field: "trust",width: 120}
   ];
 
   if(loading){
@@ -32,31 +32,32 @@ export default function Ranking(props){
     return <p>Something went wrong: {error.message}</p>
   }
   else{
-    return(
-
-      <div className="container">
-        {props.isLoggedIn? <><Droplist onChange={setInnerChoose}/>
-        <div
-        className="ag-theme-balham"
-        style={{
-          height: "500px",
-          width: "800",
-          margin: "auto"
-        }}>
-          <AgGridReact
-          columnDefs={columns}
-          rowData={rowData}
-          pagination={true}
-          paginationPageSize={15}
-          onRowClicked={(row) => history.push(`/charts?country=${row.data.country}&year=${innerChoose}`)}
-          /> 
-        </div></> : <><h2 className="errorPage">Oops!! Please login.</h2></>}    
-      </div>  
-    )
+      return(
+        <div className="container">
+          <Droplist onChange={setInnerChoose}/>
+          <div
+          className="ag-theme-balham"
+          style={{
+            height: "500px",
+            width: "800",
+            margin: "auto"
+          }}>
+            <AgGridReact
+            columnDefs={columns}
+            rowData={rowData}
+            pagination={true}
+            paginationPageSize={15}
+            onRowClicked={(row) => history.push(`/charts?country=${row.data.country}&year=${innerChoose}`)}
+            /> 
+          </div>
+        </div> 
+      )
+    } 
   }
 
+
   
-}
+
 
 
 

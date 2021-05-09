@@ -14,12 +14,7 @@ function getDataByYear(y){
       country: data.country,
       score: data.score,
       year: data.year,
-      economy: data.economy,
-      family: data.family,
-      health: data.health,
-      freedom: data.freedom,
-      generosity: data.generosity,
-      trust: data.trust
+      
     };
   }))
 }
@@ -33,7 +28,6 @@ function getFactors(f){
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`
   }
-  console.log(headers)
 
   return fetch(URL, {headers})
   .then((res) => res.json())

@@ -4,12 +4,11 @@ import {
 } from "reactstrap";
 
 // navigation links
-export default function NavBar(props){
- 
+export default function NavBar(){
   return (
       <div className="navContainer">
         <Navbar color="dark" dark expand="lg">
-            <NavbarBrand href="/">World Happiness Ranking</NavbarBrand>
+            <NavbarBrand href="/">Happiness</NavbarBrand>
             <Nav className="mr-auto" navbar>
               
               <NavItem>
@@ -25,24 +24,23 @@ export default function NavBar(props){
 
             {/* For user accounts */}
            <Nav className="ml-auto" navbar> 
-           {!props.isLoggedIn ? <NavItem>
-              <NavLink href="/register">Register</NavLink>
-             </NavItem>: null}
-               
-             {!props.isLoggedIn ?  <NavItem>
-               <NavLink href="/login">Login</NavLink>
-             </NavItem> : null}
             
-             {props.isLoggedIn ?  <NavItem>
+            <NavItem>
+              <NavLink href="/register" style={{backgroundColor: '#cf1322', color:'#ffffff'}}>Register</NavLink>
+             </NavItem>           
+            <NavItem>
+               <NavLink href="/login">Login</NavLink>
+             </NavItem>
+             <NavItem>
                 <NavLink href="/" onClick={() => {logoutBt()}}>Logout</NavLink>
-              </NavItem> : null}
-              
+              </NavItem>
+
             </Nav>     
           </Navbar>
       </div>)
 
   function logoutBt() {
     localStorage.clear();
-    props.setLoggedIn(false);
+    //props.setLoggedIn(false);
   }
 }
